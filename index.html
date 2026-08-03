@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Prueba</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            background:linear-gradient(135deg,#2193b0,#6dd5ed);
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            min-height:100vh;
+            padding:20px;
+        }
+
+        .card{
+            background:white;
+            width:100%;
+            max-width:400px;
+            border-radius:20px;
+            padding:30px;
+            text-align:center;
+            box-shadow:0 10px 25px rgba(0,0,0,.2);
+        }
+
+        h1{
+            color:#2193b0;
+            margin-bottom:15px;
+        }
+
+        p{
+            color:#555;
+            margin-bottom:20px;
+            line-height:1.5;
+        }
+
+        button{
+            width:100%;
+            padding:15px;
+            border:none;
+            border-radius:10px;
+            background:#2193b0;
+            color:white;
+            font-size:18px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#19758d;
+        }
+
+        #mensaje{
+            margin-top:20px;
+            font-weight:bold;
+            color:green;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>📱 Página de prueba</h1>
+
+    <p>
+        Esta página está optimizada para teléfonos móviles.
+    </p>
+
+    <button onclick="saludar()">
+        Pulsar
+    </button>
+
+    <div id="mensaje"></div>
+</div>
+
+<script>
+function saludar(){
+    document.getElementById("mensaje").innerHTML =
+        "¡Hola! La página funciona correctamente 🎉";
+}
+</script>
+
+</body>
+</html>
