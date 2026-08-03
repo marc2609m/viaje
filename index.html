@@ -7,6 +7,7 @@
 <title>¿PREPARADA?</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -15,129 +16,634 @@
 }
 
 body{
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
     overflow:hidden;
-    cursor:pointer;
+    height:100vh;
 
     background:linear-gradient(
         -45deg,
-        #5f2cff,
-        #7b2ff7,
-        #4f46e5,
-        #2563eb,
-        #3b82f6,
-        #7b2ff7
+        #5227ff,
+        #6a3cff,
+        #4169ff,
+        #2575fc,
+        #5b3fff,
+        #3f6dff
     );
 
     background-size:400% 400%;
-
     animation:fondoLava 15s ease infinite;
 }
 
-.container{
-    text-align:center;
-    padding:20px;
+@keyframes fondoLava{
+
+    0%{background-position:0% 50%;}
+    25%{background-position:50% 100%;}
+    50%{background-position:100% 50%;}
+    75%{background-position:50% 0%;}
+    100%{background-position:0% 50%;}
+
+}
+
+/*--------------------*/
+/* Pantallas */
+/*--------------------*/
+
+.pantalla{
+
+    position:absolute;
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    transition:1s;
+}
+
+.oculta{
+
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+
 }
 
 h1{
+
     color:white;
-    font-size:3.2rem;
-    font-weight:900;
-    text-shadow:0 5px 20px rgba(0,0,0,.25);
+    font-size:3.3rem;
+    text-shadow:0 10px 25px rgba(0,0,0,.25);
+
     animation:flotar 3s ease-in-out infinite;
+
 }
 
-p{
+.indicacion{
+
     margin-top:30px;
     color:white;
     font-size:1.1rem;
-    letter-spacing:1px;
-    opacity:.8;
-    animation:parpadeo 2s ease-in-out infinite;
+    animation:desvanecer 2s infinite;
+
 }
 
 @keyframes flotar{
-    0%{
+
+    0%,100%{
         transform:translateY(0px);
     }
+
     50%{
         transform:translateY(-15px);
     }
-    100%{
-        transform:translateY(0px);
-    }
+
 }
 
-@keyframes parpadeo{
+@keyframes desvanecer{
+
     0%,100%{
         opacity:0;
     }
+
     50%{
         opacity:1;
     }
+
+}
+
+/*--------------------*/
+/* Segunda pantalla */
+/*--------------------*/
+
+#bandera{
+
+    width:85%;
+    max-width:420px;
+
+    border-radius:20px;
+
+    filter:blur(12px);
+
+    transition:1s;
+
+    cursor:pointer;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.35);
+
+    animation:flotar 3s ease-in-out infinite;
+
+}
+
+#bandera.revelada{
+
+    filter:blur(0px);
+
+    transform:scale(1.05);
+
+    animation:flotar 3s ease-in-out infinite;
+}
+
+#mensaje{
+
+    color:white;
+
+    margin-top:35px;
+
+    font-size:1.6rem;
+
+    font-weight:bold;
+
+    text-align:center;
+
+    width:90%;
+
+    opacity:0;
+
+    transform:translateY(30px);
+
+    transition:1s;
+
+}
+
+#mensaje.visible{
+
+    opacity:1;
+
+    transform:translateY(0);
+
 }
 
 @media(max-width:600px){
 
     h1{
+
         font-size:2.6rem;
+
     }
 
-    p{
-        font-size:1rem;
-    }
+    #mensaje{
 
-}
+        font-size:1.3rem;
 
-@keyframes fondoLava{
-
-    0%{
-        background-position:0% 50%;
-    }
-
-    25%{
-        background-position:50% 100%;
-    }
-
-    50%{
-        background-position:100% 50%;
-    }
-
-    75%{
-        background-position:50% 0%;
-    }
-
-    100%{
-        background-position:0% 50%;
     }
 
 }
+
+.tarjeta{
+
+    width:90%;
+    max-width:450px;
+
+    height:140px;
+
+    margin:12px;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    background-size:cover;
+
+    background-position:center;
+
+    cursor:pointer;
+
+    transition:.4s;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.35);
+
+}
+
+.tarjeta:hover{
+
+    transform:scale(1.03);
+
+}
+
+.overlay{
+
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,.35);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:white;
+
+    font-size:1.6rem;
+
+    font-weight:bold;
+
+}
+
+.detalle{
+
+    justify-content:flex-start;
+
+    overflow-y:auto;
+
+    padding-bottom:50px;
+
+}
+
+.detalle img{
+
+    width:100%;
+
+    height:250px;
+
+    object-fit:cover;
+
+}
+
+.detalle h2{
+
+    color:white;
+
+    margin:25px;
+
+    font-size:2rem;
+
+}
+
+.detalle p{
+
+    color:white;
+
+    width:90%;
+
+    line-height:1.7;
+
+    font-size:1.1rem;
+
+}
+
+.volver{
+
+    position:fixed;
+
+    top:20px;
+
+    left:20px;
+
+    z-index:100;
+
+    border:none;
+
+    padding:12px 20px;
+
+    border-radius:30px;
+
+    background:white;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+}
+
 </style>
+
 </head>
+<body>
 
-<body onclick="continuar()">
+<!-- Pantalla 1 -->
 
-<div class="container">
+<div id="inicio" class="pantalla">
 
     <h1>¿PREPARADA?</h1>
 
-    <p>Pulsa para continuar</p>
+    <div class="indicacion">
+        Pulsa para continuar
+    </div>
+
+</div>
+
+<!-- Pantalla 2 -->
+
+<div id="polonia" class="pantalla oculta">
+
+    <img
+        id="bandera"
+        src="https://upload.wikimedia.org/wikipedia/commons/1/12/Flag_of_Poland.svg"
+        alt="Bandera de Polonia">
+
+    <div id="mensaje">
+
+        Prepárate para visitar Cracovia, Polonia
+
+    </div>
+
+</div>
+
+<!-- Pantalla 3 -->
+
+<div id="menu" class="pantalla oculta">
+
+    <h1 style="font-size:2.2rem;margin-bottom:40px;">
+        ¿Qué podremos visitaremos? (Podemos cambiarlo)
+    </h1>
+
+    <div class="tarjeta"
+         onclick="abrirApartado('auschwitz')"
+         style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/6/6f/Auschwitz_Birkenau_gate.jpg');">
+
+        <div class="overlay">
+            Auschwitz
+        </div>
+
+    </div>
+
+    <div class="tarjeta"
+         onclick="abrirApartado('minas')"
+         style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/7/75/Wieliczka_Salt_Mine_-_St_Kinga_Chapel.jpg');">
+
+        <div class="overlay">
+            Minas de Sal
+        </div>
+
+    </div>
+
+    <div class="tarjeta"
+         onclick="abrirApartado('parque')"
+         style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/5/5d/Morskie_Oko%2C_Tatra_National_Park%2C_Poland.jpg');">
+
+        <div class="overlay">
+            Parque Nacional
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ========================= -->
+<!-- Pantalla Auschwitz -->
+<!-- ========================= -->
+
+<div id="auschwitz" class="pantalla oculta detalle">
+
+    <button class="volver" onclick="volverMenu()">
+        ← Volver
+    </button>
+
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Auschwitz_I_%2822_May_2010%29.jpg/330px-Auschwitz_I_%2822_May_2010%29.jpg">
+
+    <h2>Auschwitz</h2>
+
+    <p>
+
+🚶 <b>Desde el hotel</b>
+
+<br><br>
+
+• Caminar <b>11 min</b> hasta <b>Park Decjusza</b>.
+
+<br><br>
+
+🚌 Coger el <b>autobús 192</b> durante <b>24 min</b> (16 paradas).
+
+<br><br>
+
+🚶 Caminar <b>1 min</b> hasta <b>Kraków Główny</b>.
+
+<br><br>
+
+🚆 Coger el <b>tren 41</b> durante <b>41 min</b> (4 paradas) hasta <b>Oświęcim</b>.
+
+<br><br>
+
+⏱️ <b>Tiempo total:</b> 1 h 23 min
+
+<br><br>
+
+💰 <b>Coste total:</b> 12.00 PLN (≈ 2,78 €)
+
+<br><br>
+
+🕗 <b>Horas recomendadas para salir:</b>
+
+<br>
+
+08:00 – 12:00
+
+<br>
+
+o
+
+<br>
+
+13:00 – 17:00
+
+</p>
+
+</div>
+
+<!-- ========================= -->
+<!-- Pantalla Minas -->
+<!-- ========================= -->
+
+<div id="minas" class="pantalla oculta detalle">
+
+    <button class="volver" onclick="volverMenu()">
+        ← Volver
+    </button>
+
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/%CE%91%CE%BB%CE%B1%CF%84%CF%89%CF%81%CF%85%CF%87%CE%B5%CE%AF%CE%B1_%CE%92%CE%B9%CE%B5%CE%BB%CE%AF%CF%84%CF%83%CE%BA%CE%B1_5021.jpg/330px-%CE%91%CE%BB%CE%B1%CF%84%CF%89%CF%81%CF%85%CF%87%CE%B5%CE%AF%CE%B1_%CE%92%CE%B9%CE%B5%CE%BB%CE%AF%CF%84%CF%83%CE%BA%CE%B1_5021.jpg">
+
+    <h2>Minas de Sal</h2>
+
+    <p>
+
+🚶 <b>Desde el hotel</b>
+
+<br><br>
+
+• Caminar <b>11 min</b> hasta <b>Park Decjusza</b>.
+
+<br><br>
+
+🚌 Coger el <b>192</b> durante <b>12 min</b> (10 paradas).
+
+<br><br>
+
+🚶 Caminar <b>1 min</b> hasta <b>Muzeum Narodowe</b>.
+
+<br><br>
+
+🚌 Coger el <b>304</b> durante <b>26 min</b> (10 paradas).
+
+<br><br>
+
+🚶 Caminar <b>2 min</b> hasta <b>Daniłowicza 10</b>.
+
+<br><br>
+
+⏱️ <b>Tiempo total:</b> 1 h 4 min
+
+<br><br>
+
+💰 <b>Entrada:</b> 168,99 PLN (≈ 39,20 €)
+
+<br>
+
+🚌 <b>Bus:</b> 8,00 PLN (≈ 1,86 €)
+
+<br><br>
+
+🕗 <b>Horas recomendadas:</b>
+
+<br>
+
+Si vamos en <b>sábado</b>, cualquier hora del día.
+
+<br>
+
+El resto de días, <b>por la tarde</b>.
+
+</p>
+
+</div>
+
+<!-- ========================= -->
+<!-- Pantalla Parque -->
+<!-- ========================= -->
+
+<div id="parque" class="pantalla oculta detalle">
+
+    <button class="volver" onclick="volverMenu()">
+        ← Volver
+    </button>
+
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Bia%C5%82a_R%C4%99ka_Ojcowski_PN.jpg/250px-Bia%C5%82a_R%C4%99ka_Ojcowski_PN.jpg">
+
+    <h2>Parque Nacional</h2>
+
+    <p>
+
+🚶 <b>Desde el hotel</b>
+
+<br><br>
+
+• Caminar <b>11 min</b> hasta <b>Park Decjusza</b>.
+
+<br><br>
+
+🚌 Coger el <b>152</b> durante <b>12 min</b> (10 paradas).
+
+<br><br>
+
+📍 Bajar en <b>Kraków Muzeum Narodowe</b>.
+
+<br><br>
+
+🚌 Coger el <b>LR0</b> durante <b>51 min</b> (11 paradas).
+
+<br><br>
+
+📍 Bajar en <b>Ojców Zamek</b>.
+
+<br><br>
+
+🚶 Caminar <b>6 min</b> hasta <b>Ojców 9</b>.
+
+<br><br>
+
+⏱️ <b>Tiempo total:</b> 1 h 26 min
+
+<br><br>
+
+💰 <b>Coste total:</b> 12,00 PLN (≈ 2,78 €)
+
+<br><br>
+
+🕘 <b>Horas recomendadas:</b>
+
+<br>
+
+09:00 – 13:00
+
+</p>
 
 </div>
 
 <script>
 
-function continuar(){
+const inicio=document.getElementById("inicio");
+const polonia=document.getElementById("polonia");
 
-    // De momento no hace nada.
-    // Más adelante aquí podremos ir a otra página.
+inicio.addEventListener("click",()=>{
 
-    // window.location.href = "pagina2.html";
+    inicio.classList.add("oculta");
+
+    polonia.classList.remove("oculta");
+
+});
+
+const bandera=document.getElementById("bandera");
+const mensaje=document.getElementById("mensaje");
+
+const menu=document.getElementById("menu");
+
+let revelado=false;
+
+bandera.addEventListener("click",(e)=>{
+
+    e.stopPropagation();
+
+    bandera.classList.add("revelada");
+
+    mensaje.classList.add("visible");
+
+    revelado=true;
+
+});
+
+polonia.addEventListener("click",()=>{
+
+    if(!revelado) return;
+
+    polonia.classList.add("oculta");
+
+    menu.classList.remove("oculta");
+
+});
+
+function abrirApartado(id){
+
+    // Oculta el menú
+    menu.classList.add("oculta");
+
+    // Oculta todos los apartados
+    document.querySelectorAll(".detalle").forEach(e=>{
+        e.classList.add("oculta");
+    });
+
+    // Muestra solo el seleccionado
+    document.getElementById(id).classList.remove("oculta");
 
 }
+
+function volverMenu(){
+
+    document.querySelectorAll(".detalle").forEach(e=>{
+
+        e.classList.add("oculta");
+
+    });
+
+    menu.classList.remove("oculta");
+
+}
+
+</script>
+
+</body>
+</html>
 
 </script>
 
